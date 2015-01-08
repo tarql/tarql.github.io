@@ -25,9 +25,9 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.util.iterator.NullIterator;
 
 /**
- * The <code>tarql</code> CLI command.
+ * The <code>Tarql</code> CLI command.
  */
-public class tarql extends CmdGeneral {
+public class Tarql extends CmdGeneral {
 
 	// This will be displayed by --version
 	public static final String VERSION;
@@ -36,7 +36,7 @@ public class tarql extends CmdGeneral {
 		String version = "Unknown";
 		String date = "Unknown";
 		try {
-			URL res = tarql.class.getResource(tarql.class.getSimpleName() + ".class");
+			URL res = Tarql.class.getResource(Tarql.class.getSimpleName() + ".class");
 			Manifest mf = ((JarURLConnection) res.openConnection()).getManifest();
 			version = (String) mf.getMainAttributes().getValue("Implementation-Version");
 			date = (String) mf.getMainAttributes().getValue("Built-Date")
@@ -48,7 +48,7 @@ public class tarql extends CmdGeneral {
 	}
 	
 	public static void main(String... args) {
-		new tarql(args).mainRun();
+		new Tarql(args).mainRun();
 	}
 
 	private final ArgDecl testQueryArg = new ArgDecl(false, "test");
@@ -73,7 +73,7 @@ public class tarql extends CmdGeneral {
 
 	private ExtendedIterator<Triple> resultTripleIterator = NullIterator.instance();
 	
-	public tarql(String[] args) {
+	public Tarql(String[] args) {
 		super(args);
 		getUsage().startCategory("Options");
 		add(testQueryArg,     "--test", "Show CONSTRUCT template and first rows only (for query debugging)");
@@ -88,7 +88,7 @@ public class tarql extends CmdGeneral {
 		getUsage().startCategory("Main arguments");
 		getUsage().addUsage("query.sparql", "File containing a SPARQL query to be applied to a CSV file");
 		getUsage().addUsage("table.csv", "CSV file to be processed; can be omitted if specified in FROM clause");
-		modVersion.addClass(tarql.class);
+		modVersion.addClass(Tarql.class);
 	}
 	
 	@Override
@@ -225,10 +225,10 @@ public class tarql extends CmdGeneral {
 			Logger.getRootLogger().setLevel(Level.ERROR);
 		}
 		if (isVerbose()) {
-			Logger.getLogger("org.deri.tarql").setLevel(Level.INFO);
+			Logger.getLogger("org.deri.Tarql").setLevel(Level.INFO);
 		}
 		if (isDebug()) {
-			Logger.getLogger("org.deri.tarql").setLevel(Level.DEBUG);
+			Logger.getLogger("org.deri.Tarql").setLevel(Level.DEBUG);
 		}
 	}
 }
