@@ -1,7 +1,1 @@
-.classpath
-.project
-target/
-.DS_Store
-.settings
-.idea/
-*.iml
+.sass-cache/
