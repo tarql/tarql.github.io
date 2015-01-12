@@ -1,6 +1,0 @@
-BASE <http://example.com/>
-SELECT *
-FROM <file:src/test/resources/simple.csv>
-{
-  BIND (<> AS ?base)
-}
