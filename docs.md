@@ -32,13 +32,13 @@ To run the examples you need to first create the executable scripts as explained
 ~$ sh bin/tarql --ntriples ../../examples/sample-2.sparql ../../examples/TechCrunchcontinentalUSA.csv
 {% endhighlight %}
 
-### Documentation
+### Code Documentation
 
 Java documentation is also available [here](/javadocs/index.html).
 
 ### Community
 
-Mailing list: [tarql-mailing-list](https://groups.google.com/d/forum/tarql)
+Mailing list: [tarql-mailing-list](https://groups.google.com/d/forum/tarql) <br>
 Group email: [tarql@googlegroups.com](mailto:tarql@googlegroups.com)
 
 #### Reporting Issues
@@ -48,7 +48,7 @@ If you'd like to report a bug in Tarql or ask for a new feature, open an issue o
 #### Contribute Code
 
 You can contribute to the project submitting GitHub pull requests. Start by opening an issue for your change on the [Tarql GitHub Project](https://github.com/cygri/tarql/issues) (and make sure to search whether
-there is an existing issue). Please use descriptive names in your pull requests. You can always check the code in the [https://github.com/cygri/tarql]() repository.
+there is an existing issue). Please use descriptive names in your pull requests. You can always check the code in the [https://github.com/cygri/tarql](https://github.com/cygri/tarql) repository.
 
 Currently there are some points in the **TO DO** list listed below:
 
