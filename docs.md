@@ -15,13 +15,19 @@ and configure `PATH`, or the `JAVA_HOME` environment variables pointing to the J
 
 ### Building from Source Code
 
-Get the code from [Tarql GitHub Project](http://github.com/cygri/tarql)
+Get the code from by forking the [Tarql GitHub Project](http://github.com/cygri/tarql).
 
-Tarql uses Maven. To create executable scripts for Windows and Unix in `/target/appassembler/bin/`:
+{% highlight bash %}
+~$ git clone https://github.com/cygri/tarql
+{% endhighlight %}
+
+Tarql uses Maven and there is an `assember.xml` file to package the code. To create executable scripts for Windows and Unix:
 
 {% highlight bash %}
 ~$ mvn clean install -DskipTests
 {% endhighlight %}
+
+By doing that you will generate the folder `/target/appassembler/bin/` which contains the executables.
 
 ### Running the Examples
 

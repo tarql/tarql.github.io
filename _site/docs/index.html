@@ -56,11 +56,15 @@ and configure <code>PATH</code>, or the <code>JAVA_HOME</code> environment varia
 
 <h3 id="building-from-source-code">Building from Source Code</h3>
 
-<p>Get the code from <a href="http://github.com/cygri/tarql">Tarql GitHub Project</a></p>
+<p>Get the code from by forking the <a href="http://github.com/cygri/tarql">Tarql GitHub Project</a>.</p>
 
-<p>Tarql uses Maven. To create executable scripts for Windows and Unix in <code>/target/appassembler/bin/</code>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~<span class="nv">$ </span>git clone https://github.com/cygri/tarql</code></pre></div>
+
+<p>Tarql uses Maven and there is an <code>assember.xml</code> file to package the code. To create executable scripts for Windows and Unix:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">~<span class="nv">$ </span>mvn clean install -DskipTests</code></pre></div>
+
+<p>By doing that you will generate the folder <code>/target/appassembler/bin/</code> which contains the executables.</p>
 
 <h3 id="running-the-examples">Running the Examples</h3>
 
