@@ -2,22 +2,6 @@
 layout: default
 ---
 
-<!-- <div class="posts">
-  {% for post in site.posts %}
-    <article class="post">    
-      
-      <h1><a href="{{ site.baseurl }}/tarql{{ post.url }}">{{ post.title }}</a></h1>
-
-      <div class="entry">
-        {{ post.content | truncatewords:40}}
-      </div>
-      
-      <a href="{{ site.baseurl }}/tarql{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
--->
-
 # Tarql: SPARQL for Tables
 
 Tarql is a command-line tool for converting CSV files to RDF using SPARQL 1.1 syntax. It's written in Java and based on Apache ARQ.

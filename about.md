@@ -24,11 +24,9 @@ Original repository in GitHub: [https://github.com/cygri/tarql]()
 #### 0.9 (2013-02-08)
 * First release
 
-{% comment %} 
-### Contact me
+### Contact us
 
-[email@domain.com](mailto:email@domain.com)
-{% endcomment %} 
+[tarql@googlegroups.com](mailto:tarql@googlegroups.com)
 
 
 Last Update: {{ site.time | date: '%B %d, %Y' }}

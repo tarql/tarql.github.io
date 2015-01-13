@@ -34,15 +34,16 @@ To run the examples you need to first create the executable scripts as explained
 
 ### Documentation
 
-Java documentation is available [here](/tarql/javadocs/index.html).
+Java documentation is also available [here](/javadocs/index.html).
 
 ### Community
 
-_TBD: [mailing list](#)_
+Mailing list: [tarql-mailing-list](https://groups.google.com/d/forum/tarql)
+Group email: [tarql@googlegroups.com](mailto:tarql@googlegroups.com)
 
 #### Reporting Issues
 
-If you'd like to report a bug in Tarql or ask for a new feature, open an issue on the [Tarql GitHub Project](https://github.com/cygri/tarql/issues). For general usage help, you should email the user [mailing list](#).
+If you'd like to report a bug in Tarql or ask for a new feature, open an issue on the [Tarql GitHub Project](https://github.com/cygri/tarql/issues). For general usage help, you should email the user [mailing list](https://groups.google.com/d/forum/tarql).
 
 #### Contribute Code
 
