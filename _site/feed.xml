@@ -3,8 +3,8 @@
   <channel>
     <title>Tarql</title>
     <description>SPARQL for Tables: Turn CSV into RDF using SPARQL syntax</description>
-    <link></link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://tarql.github.io/</link>
+    <atom:link href="http://tarql.github.io//feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>You're up and running!</title>
@@ -15,8 +15,8 @@
 &lt;p&gt;The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the &lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;Jekyll Now repository&lt;/a&gt; on GitHub.&lt;/p&gt;
 </description>
         <pubDate>Mon, 03 Mar 2014 00:00:00 +0000</pubDate>
-        <link>/Hello-World/</link>
-        <guid isPermaLink="true">/Hello-World/</guid>
+        <link>http://tarql.github.io//Hello-World/</link>
+        <guid isPermaLink="true">http://tarql.github.io//Hello-World/</guid>
       </item>
     
   </channel>
