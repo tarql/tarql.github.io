@@ -195,6 +195,7 @@ Tarql has extra funcionalities that can be used to filter or transform column va
   ...
   WHERE {
     BIND (tarql:date(?Release_Date, 'MM/dd/yyyy') AS ?ReleaseDate)
+    BIND (tarql:date-time(?Release_Date, 'MM/dd/yyyy') AS ?ReleaseDateTime)
     BIND (tarql:currency(?Production_Budget, 'USD') AS ?ProductionBudget)
   }
   ...
@@ -202,9 +203,13 @@ Tarql has extra funcionalities that can be used to filter or transform column va
 
 Where:
 
+- ?Release_Date ("12/18/2009") is mapped to "2009-12-18"^^<http://www.w3.org/2001/XMLSchema#date>
 - ?Release_Date ("12/18/2009") is mapped to "2009-12-18T00:00:00.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>
 - ?Production_Budget ("$425,000,000") is mapped to "425000000"^^<http://dbpedia.org/datatype/usDollar>
 
-So far, there are only two filters implemented. If you need other filter, please check the [documentation page](http://tarql.github.io/docs/) for reporting issues.
+So far, there are only three filters implemented. If you need other filter, please check the [documentation page](http://tarql.github.io/docs/) for reporting issues.
+
+- `tarql:date` and `tarql:date-time` use the Date and Time Patterns defined in the Java 7 specifications for [SimpleDateFormat class](http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
+- `tarql:currency` use the three letters currency code standarized in [ISO 4217](http://www.currency-iso.org/dam/downloads/table_a1.xml).
 
 Last Update: {{ site.time | date: '%B %d, %Y' }}

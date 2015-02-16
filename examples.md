@@ -284,7 +284,7 @@ In the previous mapping we have indicated the following:
 * the first column in the CSV is an identifier of the row, that can be used in the URI
 * the first column doesn't contain a column name, so name `?a` is assigned by default
 * `?a` is converted into an integer
-* the second column is a date, so can be converted into `dateTime` datatype
+* the second column is a date, so can be converted into `xsd:date` datatype
 * last three columns are money amounts that can be converted into the corresponding currency, USD for this case
 
 #### Result
@@ -301,21 +301,21 @@ We do get the following RDF in N-Triples format.
 {% highlight bash %}
 <http://example.com/ns#1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Film> .
 <http://example.com/ns#1> <http://dbpedia.org/property/number> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/ns#1> <http://dbpedia.org/property/released> "2009-12-18T00:00:00.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://example.com/ns#1> <http://dbpedia.org/property/released> "2009-12-18"^^<http://www.w3.org/2001/XMLSchema#date> .
 <http://example.com/ns#1> <http://www.w3.org/2000/01/rdf-schema#label> "Avatar" .
 <http://example.com/ns#1> <http://dbpedia.org/property/budget> "425000000"^^<http://dbpedia.org/datatype/usDollar> .
 <http://example.com/ns#1> <http://dbpedia.org/property/grossDomestic> "760507625"^^<http://dbpedia.org/datatype/usDollar> .
 <http://example.com/ns#1> <http://dbpedia.org/property/grossWorldwide> "2783918982"^^<http://dbpedia.org/datatype/usDollar> .
 <http://example.com/ns#2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Film> .
 <http://example.com/ns#2> <http://dbpedia.org/property/number> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/ns#2> <http://dbpedia.org/property/released> "2007-05-24T00:00:00.000+01:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://example.com/ns#2> <http://dbpedia.org/property/released> "2007-05-24"^^<http://www.w3.org/2001/XMLSchema#date> .
 <http://example.com/ns#2> <http://www.w3.org/2000/01/rdf-schema#label> "Pirates of the Caribbean: At World's End" .
 <http://example.com/ns#2> <http://dbpedia.org/property/budget> "300000000"^^<http://dbpedia.org/datatype/usDollar> .
 <http://example.com/ns#2> <http://dbpedia.org/property/grossDomestic> "309420425"^^<http://dbpedia.org/datatype/usDollar> .
 <http://example.com/ns#2> <http://dbpedia.org/property/grossWorldwide> "960996492"^^<http://dbpedia.org/datatype/usDollar> .
 <http://example.com/ns#3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Film> .
 <http://example.com/ns#3> <http://dbpedia.org/property/number> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
-<http://example.com/ns#3> <http://dbpedia.org/property/released> "2012-07-20T00:00:00.000+01:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://example.com/ns#3> <http://dbpedia.org/property/released> "2012-07-20"^^<http://www.w3.org/2001/XMLSchema#date> .
 <http://example.com/ns#3> <http://www.w3.org/2000/01/rdf-schema#label> "The Dark Knight Rises" .
 <http://example.com/ns#3> <http://dbpedia.org/property/budget> "275000000"^^<http://dbpedia.org/datatype/usDollar> .
 <http://example.com/ns#3> <http://dbpedia.org/property/grossDomestic> "448139099"^^<http://dbpedia.org/datatype/usDollar> .
