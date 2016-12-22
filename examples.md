@@ -8,7 +8,7 @@ permalink: /examples/
 
 #### CSV data
 
-The following lines are part of a CSV file ([TechCrunchcontinentalUSA.csv](https://github.com/emir-munoz/tarql/blob/master/examples/TechCrunchcontinentalUSA.csv)) 
+The following lines are part of a CSV file ([TechCrunchcontinentalUSA.csv](https://github.com/emir-munoz/tarql/tree/master/examples/TechCrunch/TechCrunchcontinentalUSA.csv)) 
 snapshot that contains information about companies.
 
 {% highlight bash %}
@@ -75,7 +75,7 @@ Executing Tarql with the previous mapping:
 
 {% highlight bash %}
 ~$ cd tarql/target/appassembler
-~$ sh bin/tarql --ntriples ../../examples/sample-2.sparql ../../examples/TechCrunchcontinentalUSA.csv
+~$ sh bin/tarql --ntriples ../../examples/TechCrunch/sample-2.sparql ../../examples/TechCrunch/TechCrunchcontinentalUSA.csv
 {% endhighlight %}
 
 We do get the following RDF in N-Triples format.
@@ -217,6 +217,109 @@ We do get the following RDF in N-Triples format.
 <http://en.wikipedia.org/wiki/Tom%C3%A1%C5%A1_Rosick%C3%BD> <http://dbpedia.org/property/number> "7"^^<http://www.w3.org/2001/XMLSchema#integer> .
 <http://en.wikipedia.org/wiki/Tom%C3%A1%C5%A1_Rosick%C3%BD> <http://dbpedia.org/property/birthPlace> <http://en.wikipedia.org/wiki/Czech_Republic> .
 <http://en.wikipedia.org/wiki/Tom%C3%A1%C5%A1_Rosick%C3%BD> <http://dbpedia.org/property/position> <http://en.wikipedia.org/wiki/Midfielder> .
+...
+{% endhighlight %}
+
+### Example \#3
+
+#### CSV data
+
+The following lines are part of a CSV file ([table_1.csv](https://github.com/emir-munoz/tarql/blob/master/examples/Movies/table_1.csv)) 
+snapshot that contains information extracted from the [article](http://www.the-numbers.com/movie/budgets/all).
+
+{% highlight bash %}
+" ","Release Date","Movie","Production Budget","Domestic Gross","Worldwide Gross"
+"1","12/18/2009","Avatar","$425,000,000","$760,507,625","$2,783,918,982"
+"2","5/24/2007","Pirates of the Caribbean: At World's End","$300,000,000","$309,420,425","$960,996,492"
+"3","7/20/2012","The Dark Knight Rises","$275,000,000","$448,139,099","$1,079,343,943"
+"4","7/2/2013","The Lone Ranger","$275,000,000","$89,289,910","$259,989,910"
+"5","3/9/2012","John Carter","$275,000,000","$73,058,679","$282,778,100"
+"6","11/24/2010","Tangled","$260,000,000","$200,821,936","$586,581,936"
+"7","5/4/2007","Spider-Man 3","$258,000,000","$336,530,303","$890,875,303"
+"8","12/14/2012","The Hobbit: An Unexpected Journey","$250,000,000","$303,003,568","$1,014,703,568"
+"9","7/15/2009","Harry Potter and the Half-Blood Prince","$250,000,000","$301,959,197","$935,083,686"
+"10","12/13/2013","The Hobbit: The Desolation of Smaug","$250,000,000","$258,366,855","$950,466,855"
+"11","12/10/2014","The Hobbit: The Battle of the Five Armies","$250,000,000","$252,912,902","$917,112,902"
+"12","5/20/2011","Pirates of the Caribbean: On Stranger Tides","$250,000,000","$241,063,875","$1,043,663,875"
+"13","6/28/2006","Superman Returns","$232,000,000","$200,120,000","$374,085,065"
+"14","11/14/2008","Quantum of Solace","$230,000,000","$169,368,427","$591,692,078"
+"15","5/4/2012","The Avengers","$225,000,000","$623,279,547","$1,514,279,547"
+"16","7/7/2006","Pirates of the Caribbean: Dead Man's Chest","$225,000,000","$423,315,812","$1,060,615,812"
+{% endhighlight %}
+
+#### Tarql mapping
+
+We could define a mapping to convert the previous CSV file into RDF triples as follows:
+
+{% highlight bash %}
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX tarql: <http://tarql.github.io/tarql#>
+
+CONSTRUCT {
+  ?MovieUrl a dbo:Film;
+    dbp:number ?id;
+    dbp:released ?ReleaseDate;
+    rdfs:label ?Movie;
+    dbp:budget ?ProductionBudget;
+    dbp:grossDomestic ?DomesticGross;
+    dbp:grossWorldwide ?WorldwideGross;
+}
+FROM <file:table_1.csv> 
+WHERE {
+  BIND (URI(CONCAT('http://example.com/ns#', ?a)) AS ?MovieUrl)
+  BIND (xsd:integer(?a) AS ?id)
+  BIND (tarql:date(?Release_Date, 'MM/dd/yyyy') AS ?ReleaseDate)
+  BIND (tarql:currency(?Production_Budget, 'USD') AS ?ProductionBudget)
+  BIND (tarql:currency(?Domestic_Gross, 'USD') AS ?DomesticGross)
+  BIND (tarql:currency(?Worldwide_Gross, 'USD') AS ?WorldwideGross)
+}
+{% endhighlight %}
+
+In the previous mapping we have indicated the following:
+
+* which file are we trying to convert (`file:table_1.csv`)
+* the first column in the CSV is an identifier of the row, that can be used in the URI
+* the first column doesn't contain a column name, so name `?a` is assigned by default
+* `?a` is converted into an integer
+* the second column is a date, so can be converted into `xsd:date` datatype
+* last three columns are money amounts that can be converted into the corresponding currency, USD for this case
+
+#### Result
+
+Executing Tarql with the previous mapping:
+
+{% highlight bash %}
+~$ cd tarql/target/appassembler
+~$ sh bin/tarql --ntriples ../../examples/Movies/sample-movies.sparql ../../examples/Movies/table_1.csv
+{% endhighlight %}
+
+We do get the following RDF in N-Triples format.
+
+{% highlight bash %}
+<http://example.com/ns#1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Film> .
+<http://example.com/ns#1> <http://dbpedia.org/property/number> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/ns#1> <http://dbpedia.org/property/released> "2009-12-18"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://example.com/ns#1> <http://www.w3.org/2000/01/rdf-schema#label> "Avatar" .
+<http://example.com/ns#1> <http://dbpedia.org/property/budget> "425000000"^^<http://dbpedia.org/datatype/usDollar> .
+<http://example.com/ns#1> <http://dbpedia.org/property/grossDomestic> "760507625"^^<http://dbpedia.org/datatype/usDollar> .
+<http://example.com/ns#1> <http://dbpedia.org/property/grossWorldwide> "2783918982"^^<http://dbpedia.org/datatype/usDollar> .
+<http://example.com/ns#2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Film> .
+<http://example.com/ns#2> <http://dbpedia.org/property/number> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/ns#2> <http://dbpedia.org/property/released> "2007-05-24"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://example.com/ns#2> <http://www.w3.org/2000/01/rdf-schema#label> "Pirates of the Caribbean: At World's End" .
+<http://example.com/ns#2> <http://dbpedia.org/property/budget> "300000000"^^<http://dbpedia.org/datatype/usDollar> .
+<http://example.com/ns#2> <http://dbpedia.org/property/grossDomestic> "309420425"^^<http://dbpedia.org/datatype/usDollar> .
+<http://example.com/ns#2> <http://dbpedia.org/property/grossWorldwide> "960996492"^^<http://dbpedia.org/datatype/usDollar> .
+<http://example.com/ns#3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Film> .
+<http://example.com/ns#3> <http://dbpedia.org/property/number> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://example.com/ns#3> <http://dbpedia.org/property/released> "2012-07-20"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://example.com/ns#3> <http://www.w3.org/2000/01/rdf-schema#label> "The Dark Knight Rises" .
+<http://example.com/ns#3> <http://dbpedia.org/property/budget> "275000000"^^<http://dbpedia.org/datatype/usDollar> .
+<http://example.com/ns#3> <http://dbpedia.org/property/grossDomestic> "448139099"^^<http://dbpedia.org/datatype/usDollar> .
+<http://example.com/ns#3> <http://dbpedia.org/property/grossWorldwide> "1079343943"^^<http://dbpedia.org/datatype/usDollar> .
 ...
 {% endhighlight %}
 

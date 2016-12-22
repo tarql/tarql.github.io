@@ -8,7 +8,7 @@ Tarql is a project initiated by Rickard Cyganiak (@cygri) which aims to convert 
 
 ### More Information
 
-Original repository in GitHub: [https://github.com/cygri/tarql]()
+Original repository in GitHub: [https://github.com/tarql/tarql](https://github.com/tarql/tarql)
 
 ### Changelog
 
@@ -16,6 +16,7 @@ Original repository in GitHub: [https://github.com/cygri/tarql]()
 
 **New**
 
+* [Issue #35](https://github.com/tarql/tarql/issues/35) Built-in date function to parse a date column into a typed literal. Also, added a function for currencies parsing.
 * [Issue #1](https://github.com/emir-munoz/tarql/issues/1) URLs present in a CSV row are mapped as resources
 
 #### 1.0a (2014-10-02)
