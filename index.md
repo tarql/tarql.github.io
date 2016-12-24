@@ -204,14 +204,14 @@ The character encoding of the input file. `utf-8`, `latin1`, etc.
 
 To split the values of column `?Colors` into multiple values `?Color` on spaces, using Jena's `apf:strSplit` property function:
 
-```SPARQL
+{% highlight %}
 PREFIX apf: <http://jena.apache.org/ARQ/property#>
 ...
 WHERE {
     ....
     ?Color apf:strSplit (?Colors " ")
 }
-```
+{% endhighlight %}
 
 ### Provide CSV file encoding and header information in the URL 
 
