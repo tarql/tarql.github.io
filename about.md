@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Tarql is a project initiated by Rickard Cyganiak (@cygri) which aims to convert CSV files to RDF using SPARQL 1.1 syntax.
+Tarql is a project initiated by Richard Cyganiak (@cygri) which aims to convert CSV files to RDF using SPARQL 1.1 syntax.
 
 ### More Information
 

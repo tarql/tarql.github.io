@@ -91,18 +91,50 @@ Tarql supports a magic `?ROWNUM` variable for accessing the number of the row wi
 
 ## Header row, delimiters, quotes and character encoding in CSV/TSV files
 
+CSV and TSV files vary in details such as the characters used for quoting and escaping, or the character encoding. Information about the input file to guide Tarql's parsing can be provided in two ways:
+
+1. As command line options (e.g., `--no-header-row`, `--tabs`, --encoding`)
+2. As a pseudo-fragment appended to the file's URL in the `FROM` clause or on the command line (e.g., `file.csv#header=absent;delimiter=tab`)
+
 The following syntax options can be adjusted:
 
-- Presence or absence of a header row with column names to be used as variable names (default: header present)
-- Delimiter character. The character used to separate fields in a row; typically comma (default), tab, or semicolon.
-- Quote character. The character used to enclose field values where the delimiter or a line break occurs within the value; typically, double (default) or single quote.
-- Escape character. The character used to escape quotes occurring within quoted values; typically none (default; use two quotes to escape a quote) or backslash.
-- Character encoding (`utf-8`, `latin1`, etc.; will attempt auto-detection if unspecified)
+### Header row with column names
+Presence or absence of a header row with column names to be used as variable names.
 
-These options can be specified in two ways:
+- Default: header present
+- Command line options: `--no-header-row`, `--header-row`
+- URL: `header=absent`, `header=present`
 
-1. On the command line (`--no-header-row`, `--delimiter`, `--tabs`, `--quotechar`, `--escapechar`, `--encoding`)
-2. By appending a pseudo-fragment to the CSV file's URL in the `FROM` clause or on the command line (e.g., `file.csv#header=absent`, `file.csv#delimiter=tab`, `file.csv#delimiter=%3B`, `file.csv#quotechar=singlequote;escapechar=backslash`, `file.csv#encoding=latin1`)   
+### Delimiter character
+The character used to separate fields in a row; typically comma (default), tab, or semicolon.
+
+- Default: tab for file extension `.tsv`; comma otherwise
+- Command line options: `--tabs`, `--delimiter x`
+- URL: `delimiter=x`
+- Recognized values: `comma`, `tab`, `semicolon`, any single character
+
+### Quote character
+The character used to enclose field values where the delimiter or a line break occurs within the value; typically, double or single quote. Note that the quote character can be escaped as two consecutive quotes.
+
+- Default: double quote (CSV) or none (TSV)
+- Command line option: `--quotechar x`
+- URL: `quotechar=x`
+- Recognized values: `none`, `singlequote`, `doublequote`, any single character
+
+### Escape character
+The character used to escape quotes occurring within quoted values; typically none or backslash.
+
+- Default: none
+- Command line option: `--escapechar x`
+- URL: `escapechar=x`
+- Recognized values: `none`, `backslash`, any single character
+
+### Character encoding
+The character encoding of the input file. `utf-8`, `latin1`, etc.
+
+- Default: attempt to auto-detect
+- Command line option: `--encoding xxx`
+- URL: `encoding=xxx`
 
 
 ## Design patterns and examples
