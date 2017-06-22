@@ -155,6 +155,14 @@ The character encoding of the input file. `utf-8`, `latin1`, etc.
   WHERE { FILTER (BOUND(?d)) }
 {% endhighlight %}
 
+### Skip bad values for a field
+
+{% highlight bash %}
+  ...
+  WHERE { BIND (IF(?a != 'bad_value', ?a, ?nothing) AS ?a_fixed) }
+  ...
+{% endhighlight %}
+
 ### Compute additional columns
 
 {% highlight bash %}
