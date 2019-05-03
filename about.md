@@ -11,6 +11,16 @@ permalink: /about/
 
 ## Changelog
 
+### 1.2 (2019-05-03)
+Various minor new features, improvements and bugfixes.
+
+- `--dedup n` removes duplicate triples in a window of size `n`
+- `--write-base` adds `@base` to Turtle output
+- Ignore cells containing only whitespace
+- Improved handling of unusual characters in header row
+- Automatically pre-define the `apf:` prefix for `apf:strSplit`
+- Upgrade Jena to 3.11.0 and OpenCSV to 4.6
+
 ### 1.1 (2016-12-24)
 Various minor new features, improvements and bugfixes.
 
