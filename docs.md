@@ -9,7 +9,7 @@ permalink: /docs/
 
 Get Tarql latest releases from the [dowloads page](https://github.com/tarql/tarql/releases) of the project.
 
-Tarql runs on both Windows and Unix systems. It runs locally in a single machine --- all you need is to have `java` version 1.7 or above installed on your system, 
+Tarql runs on both Windows and Unix systems. It runs locally in a single machine --- all you need is to have `java` version 1.8 or above installed on your system, 
 and configure `PATH`, or the `JAVA_HOME` environment variables pointing to the Java installation.
 
 ### Building from Source Code
